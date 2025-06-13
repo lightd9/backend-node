@@ -1,4 +1,10 @@
 {
+  "name": "identeefi-backend-node",
+  "version": "1.0.0",
+  "main": "postgres.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
