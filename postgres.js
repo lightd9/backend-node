@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { Client } = require('pg')
 const path = require('path');
 const multer = require('multer');
+require('dotenv').config(); 
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,13 +13,16 @@ app.use(cors());
 
 const port = 5000;
 
+if (!process.env.DATABASE_URL) {
+  console.error("❌ DATABASE_URL is not defined in .env");
+  process.exit(1);
+}
+
 const client = new Client({
-    host: "localhost",
-    user: "postgres",
-    port: 5432,
-    password: "postgres",
-    database: "smartscan_db"
-})
+  connectionString: process.env.DATABASE_URL
+});
+
+
 
 client.connect()
 
